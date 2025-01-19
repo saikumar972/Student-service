@@ -1,8 +1,7 @@
 package com.esrx.student.controller;
 
-import com.esrx.student.ExceptionHandling.IdInValidException;
-import com.esrx.student.dto.StudentResponse;
-import com.esrx.student.service.StudentService;
+
+import com.esrx.student.service.StudentServiceClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,7 +18,7 @@ class StudentControllerTest {
     private StudentController studentController;
 
     @Mock
-    private StudentService studentService;
+    private StudentServiceClass studentService;
 
     @BeforeEach
     void setUp() {

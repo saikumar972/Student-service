@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class StudentServiceTest {
     @InjectMocks
-    StudentService studentService;
+    StudentServiceClass studentService;
 
     @Mock
     StudentRepo repo;
@@ -150,7 +150,7 @@ class StudentServiceTest {
 
     @Test
     void privateMethodTest() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method=StudentService.class.getDeclaredMethod("validateStudentFees",double.class);
+        Method method=StudentServiceClass.class.getDeclaredMethod("validateStudentFees",double.class);
         method.setAccessible(true);
         boolean result= (boolean) method.invoke(studentService,5001);
         assertTrue(result);

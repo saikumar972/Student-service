@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class StudentService {
+public class StudentServiceClass {
     @Autowired
     private StudentRepo repo;
 
-     Logger log= LogManager.getLogger(StudentService.class);
+     Logger log= LogManager.getLogger(StudentServiceClass.class);
     @CustomAnnotation
     public StudentResponse saveStudent(StudentRequest request) {
         StudentEntity entity = null;

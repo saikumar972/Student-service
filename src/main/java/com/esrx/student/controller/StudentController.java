@@ -6,7 +6,7 @@ import com.esrx.student.customResponseEntity.ServiceResponseEntity;
 import com.esrx.student.dto.StudentRequest;
 import com.esrx.student.dto.StudentResponse;
 import com.esrx.student.entity.StudentEntity;
-import com.esrx.student.service.StudentService;
+import com.esrx.student.service.StudentServiceClass;
 import com.esrx.student.utils.StudentMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,7 +29,7 @@ import java.util.List;
 //port: 9000
 public class StudentController {
     @Autowired
-    StudentService service;
+    StudentServiceClass service;
     Logger log= LogManager.getLogger(StudentController.class);
 
 
