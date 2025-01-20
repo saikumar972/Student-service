@@ -38,7 +38,7 @@ public class GlobalExceptionHandling {
         return response;
     }
 
-     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+     @ResponseStatus(HttpStatus.BAD_REQUEST)
      @ExceptionHandler(InValidIdException.class)
      public Map<String, String> handling2(InValidIdException ex){
          Map<String, String> errorMap=new HashMap<>();

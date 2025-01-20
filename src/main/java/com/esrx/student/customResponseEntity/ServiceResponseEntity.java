@@ -1,6 +1,7 @@
 package com.esrx.student.customResponseEntity;
 
 import com.esrx.student.dto.ErrorDTo;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @XmlRootElement(name = "ServiceResponseEntity")
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonInclude(JsonInclude.Include.NON_NULL) // Exclude null fields from JSON response
 public class ServiceResponseEntity<T> {
 
     @XmlElement(name = "status")
