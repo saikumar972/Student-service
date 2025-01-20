@@ -53,25 +53,31 @@ public class StudentController {
             }),
             @ApiResponse(responseCode = "400", description = "invalid id")
     })
-    public ResponseEntity<StudentResponse> get(@PathVariable int id) throws InValidIdException {
+    public ResponseEntity<?> get(@PathVariable int id) throws InValidIdException {
         StudentResponse studentResponse=service.findStudentById(id);
-        return ResponseEntity.ok(studentResponse);
+        if(studentResponse!=null){
+            return ResponseEntity.ok(studentResponse);
+        }
+       else{
+           return new ResponseEntity<>("The entered id is invalid",HttpStatus.BAD_REQUEST);
+        }
     }
 
 
     @CustomAnnotation
     @GetMapping(path ="/getStudentById",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ServiceResponseEntity<StudentResponse> getStudentRequest(@RequestParam(required = false) Integer studentId){
+    public ResponseEntity<?> getStudentRequest(@RequestParam(required = false) Integer studentId){
         ServiceResponseEntity<StudentResponse> serviceResponseEntity = new ServiceResponseEntity<>();
         if(studentId!=null){
             serviceResponseEntity.setResponse(service.findStudentById(studentId));
             serviceResponseEntity.setStatus(HttpStatus.FOUND.toString());
+            return ResponseEntity.status(HttpStatus.FOUND).body(serviceResponseEntity);
         }
         else{
             serviceResponseEntity.setStatus(HttpStatus.BAD_REQUEST.toString());
-            //serviceResponseEntity.setResponse(new StudentResponse("Student ID is required"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(serviceResponseEntity);
+
         }
-        return serviceResponseEntity;
     }
 
 
